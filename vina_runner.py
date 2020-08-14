@@ -1,5 +1,4 @@
 import os, subprocess, configurations, argparse, sys
-from prettytable import PrettyTable
 from texttable import Texttable
 
 while True:

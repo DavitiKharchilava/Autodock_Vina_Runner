@@ -13,7 +13,7 @@ strsize_z =
 strcpu =
 strexhaustiveness =
 strnum_modes =
-conf_path = X:\Documents\Python\TurboVina-master\vina_runner\
+conf_path = X:\Documents\Python\TurboVina-master\Autodock_Vina_Runner\
 
 USER MANUAL:
 # Both ligands and proteins must be prepared for docking and converted in .pdbqt format.
