@@ -19,8 +19,13 @@ while True:
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
 
+        parser.add_argument('-o', '--output', dest='accumulate', action='store_const',
+                            const=sum, default=max,
+                            help='Output directory input')
+
         # Execute the parse_args() method
         args = parser.parse_args()
+
         pName = args.inputProteinName
 
         conf_name = "conf_" + pName + ".txt"

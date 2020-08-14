@@ -21,9 +21,9 @@ while True:
             #                      + configurations.output_dir[i+1:0]
 
             print("\nNow will be docked ligand "
-                  + lignames[i][:-6] + " to a protein "
-                  + configurations.receptor[:-6]
-                  + ". Output directory for docking will be -->> " + configurations.output_dir)
+                  + "[" + lignames[i][:-6] + "]" + " to a protein "
+                  + "[" + configurations.receptor[:-6] + "]"
+                  + ". \nOutput directory for docking will be -->> " + configurations.output_dir)
 
             subprocess.call(
                 configurations.vina_dir + " --receptor " + configurations.freceptor + " --ligand " + fligand \
