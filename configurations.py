@@ -38,6 +38,12 @@ while True:
         freceptor = lines[3][12:].rstrip()
         vina_dir = r"C:\Program1\TSRI\Vina\vina.exe"  # edit this line if vina.exe installation directory needs to be changed
         output_dir = lines[5][13:-1].rstrip()
+
+        if not os.path.isdir(output_dir):
+            os.mkdir(output_dir)
+        else:
+            output_dir = output_dir
+
         # output_dir = str(args)[38:-2]
         # if output_dir == '':
         #     output_dir = lines[5][13:-1].rstrip()
