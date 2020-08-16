@@ -59,7 +59,7 @@ while True:
 
                 # output_path = "C:/Program1/TSRI/vina/test2"  # + macromolecule
 
-                """ If you choose to save the output in .txt file [all data.txt] too, the comments "#" need to be removed in lines where 
+                """ If you choose to save the output in .txt file [all data.txt] too, the comments "#" need to be removed in lines where
                 the text_file is mentioned """
 
                 # text_file = open(output_path + "/all data.txt", mode="a")

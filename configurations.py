@@ -8,9 +8,9 @@ while True:
         # Add the arguments
         parser.add_argument("inputProteinName",
                             type=str,
-                            help="You must type correct protein name to run the docking! "
-                                 "Here is the example of a command: "
-                                 "->> python3 vina_runner.py [Protein Name Here] <<- ")
+                            help="->> python3 vina_runner.py [Protein Name Here] <<- "
+                                 "Here is the example of a command. "
+                                 "You must type correct protein name to run the docking! ")
 
         parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
                             help="In the command line you need to type the name of a protein correctly (after the "
@@ -18,17 +18,15 @@ while True:
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
-
-        parser.add_argument('-o', '--output', dest='accumulate', action='store_const',
-                            const=sum, default=max,
-                            help='Output directory input')
+        # parser.add_argument('-o', action="store", type=str)
 
         # Execute the parse_args() method
         args = parser.parse_args()
 
         pName = args.inputProteinName
 
-        conf_name = "conf_" + pName + ".txt"
+        conf_name = "conf_" + pName + ".txt"    # conf_[PROTEIN_NAME].txt should be located in the same directory as
+                                                # configuration.py and vina_runner.py
         with open(conf_name) as file_in:
             lines = []
             for line in file_in:
@@ -40,6 +38,10 @@ while True:
         freceptor = lines[3][12:].rstrip()
         vina_dir = r"C:\Program1\TSRI\Vina\vina.exe"  # edit this line if vina.exe installation directory needs to be changed
         output_dir = lines[5][13:-1].rstrip()
+        # output_dir = str(args)[38:-2]
+        # if output_dir == '':
+        #     output_dir = lines[5][13:-1].rstrip()
+
 
         strcenter_x = lines[6][14:].rstrip()
         strcenter_y = lines[7][14:].rstrip()
@@ -60,24 +62,24 @@ while True:
             print("Config file name is correct!")
         else:
             print('Wrong protein name!')
-
-        # ligdir = "C:\\Program1\\TSRI\\Vina\\Ligands\\ligs"  # should be changed for ligands directory
-        # ligpath = "C:\\Program1\\TSRI\\Vina\\Ligands\\ligs"  # should be changed for ligands directory
-        # receptor = "6m71.pdbqt"  # receptor file name
-        # freceptor = str("C:\\Program1\\TSRI\\Vina\\" + receptor)  # contains receptor location + receptor file name
-        # vina_dir = r"C:\Program1\TSRI\Vina\vina.exe"  # if the vina.exe installed directory needs to be changed, change only r'YOUR_DIRECTORY'.
-        # output = "C:\\Program1\\TSRI\\Vina\\test2\\"  # defines docking output directory
-        #
-        # # Autodock Vina docking parameters:
-        # strcenter_x = str(146)
-        # strcenter_y = str(124)
-        # strcenter_z = str(91)
-        # strsize_x = str(17)
-        # strsize_y = str(13)
-        # strsize_z = str(13)
-        # strcpu = str(4)
-        # strexhaustiveness = str(8)
-        # strnum_modes = str(9)
+    #
+    #     # ligdir = "C:\\Program1\\TSRI\\Vina\\Ligands\\ligs"  # should be changed for ligands directory
+    #     # ligpath = "C:\\Program1\\TSRI\\Vina\\Ligands\\ligs"  # should be changed for ligands directory
+    #     # receptor = "6m71.pdbqt"  # receptor file name
+    #     # freceptor = str("C:\\Program1\\TSRI\\Vina\\" + receptor)  # contains receptor location + receptor file name
+    #     # vina_dir = r"C:\Program1\TSRI\Vina\vina.exe"  # if the vina.exe installed directory needs to be changed, change only r'YOUR_DIRECTORY'.
+    #     # output = "C:\\Program1\\TSRI\\Vina\\test2\\"  # defines docking output directory
+    #     #
+    #     # # Autodock Vina docking parameters:
+    #     # strcenter_x = str(146)
+    #     # strcenter_y = str(124)
+    #     # strcenter_z = str(91)
+    #     # strsize_x = str(17)
+    #     # strsize_y = str(13)
+    #     # strsize_z = str(13)
+    #     # strcpu = str(4)
+    #     # strexhaustiveness = str(8)
+    #     # strnum_modes = str(9)
         break
     except FileNotFoundError:
         print("\nWrong protein name! Script cannot find the config file! type -> python3 vina_runner.py --help")

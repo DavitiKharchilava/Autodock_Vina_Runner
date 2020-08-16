@@ -22,8 +22,7 @@ USER MANUAL:
 # After each "=" 1 blank space must be made(" "), as it is done for "vina_dir" variable.
 # for the receptor there needs to be written receptor file name (NAME.pdbqt).
 # "vina_dir" can be changed only from configuration.py file.
-# All the directories can be written with single "\" except "output_dir".
-# "output_dir" must be written with double "\\" instead of '\'.
+# All the directories can be written with single "\".
 # After configuring this config file, it must be renamed after a protein name (conf_PROTEIN.txt)
 for which this config is created.
 It should be located in the same directory as "vina_docker.py".
