@@ -17,14 +17,14 @@ while True:
                             help="In the command line you need to type the name of a protein correctly (after the "
                                  "'python3 vina_runner.py ') to let the script start the docking with Autodock Vina. "
                                  "Command line command example ==> "
-                                 "python vina_runner.py [Protein Name Here] -o C:\\Program1\\TSRI\\vina\\test2\\ "
+                                 "python vina_runner.py [Protein Name Here] -o C:/Program1/TSRI/vina/test2/ "
                                  "(-o and path can be optional). "
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
 
-        parser.add_argument('-o', "--output", help="# output_dir path must be written with ending '\\' "
-                                                   "(C:\\Program1\\TSRI\\vina\\test2\\ <= last '\\' must be presented!). "
+        parser.add_argument('-o', "--output", help="# output_dir path must be written with ending '/' "
+                                                   "(ex: C:/Program1/TSRI/vina/test2/ <= last '/' must be presented!). "
                                                    "Output directory path is optional argument, "
                                                    "default path for output directory should be already mentioned "
                                                    "in conf_[PROTEIN].txt file, by user.", action="store", type=str)
@@ -49,9 +49,8 @@ while True:
         receptor = lines[2][11:].rstrip()
         ## Protein file full path:
         freceptor = lines[3][12:].rstrip()
-
-        #####!!!!! edit this line below , if vina.exe installation directory needs to be changed !!!!!#####
-        vina_dir = r"C:\Program1\TSRI\vina\vina.exe"
+        ## vina.exe directory:
+        vina_dir = lines[4][11:].rstrip()
 
         ## Accepts output directory from command -o [out_dir]:
         if args.output is not None:
