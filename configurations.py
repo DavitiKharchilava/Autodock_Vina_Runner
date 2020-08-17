@@ -19,7 +19,9 @@ while True:
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
-        parser.add_argument('-o', "--output", help="Output directory path. It is optional argument, "
+        parser.add_argument('-o', "--output", help="# output_dir path must be written with ending '\\' "
+                                                   "(C:\\Program1\\TSRI\\vina\\test2\\ <= last '\\' must be presented!). "
+                                                   "Output directory path is optional argument, "
                                                    "default path for output directory should be already mentioned "
                                                    "in conf_[PROTEIN].txt file, by user.", action="store", type=str)
 

@@ -61,5 +61,6 @@ be aware that in the output directory older version of output file will be repla
 or change the next output directory to avoid such result.
 - script will use output_dir line as a default docking output directory, from the command line this directory can be 
 changed manually. Either way if the output_dir does not exists there will be created one.
+- output_dir path must be written with ending '\\' (ex: C:\Program1\TSRI\vina\test2\ <= last '\\' must be presented!)
 
 Have a happy docking!
