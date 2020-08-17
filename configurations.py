@@ -8,7 +8,7 @@ while True:
         ## Add the arguments:
         parser.add_argument("inputProteinName",
                             type=str,
-                            help="->> python3 vina_runner.py [Protein Name Here] <<- "
+                            help="->> python vina_runner.py [Protein Name Here] <<- "
                                  "Here is the example of a command. "
                                  "You must type correct protein name to run the docking! ")
 
@@ -16,9 +16,13 @@ while True:
         parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
                             help="In the command line you need to type the name of a protein correctly (after the "
                                  "'python3 vina_runner.py ') to let the script start the docking with Autodock Vina. "
+                                 "Command line command example ==> "
+                                 "python vina_runner.py [Protein Name Here] -o C:\\Program1\\TSRI\\vina\\test2\\ "
+                                 "(-o and path can be optional). "
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
+
         parser.add_argument('-o', "--output", help="# output_dir path must be written with ending '\\' "
                                                    "(C:\\Program1\\TSRI\\vina\\test2\\ <= last '\\' must be presented!). "
                                                    "Output directory path is optional argument, "

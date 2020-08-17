@@ -3,11 +3,12 @@
 
 ####Runs Autodock Vina multi-ligand docking!
 
-In the command line you need to type the name of a protein correctly (after the 'python3 vina_runner.py ') \
-to let the script start the docking with Autodock Vina. \
-The written protein name represents the conf_PROTEIN.txt config file which should be located \
-in the same directory as 'vina_runner.py' and it also should be set up properly for docking. \
-Output directory path is an optional argument, default path for output directory should be already mentioned in conf_[PROTEIN].txt file, by user. \
+In the command line you need to type the name of a protein correctly (after the 'python3 vina_runner.py ') 
+to let the script start the docking with Autodock Vina. Command line command 
+example ==> python vina_runner.py [Protein Name Here] -o C:\\Program1\\TSRI\\vina\\test2\\ (-o and path can be optional). 
+The written protein name represents the conf_PROTEIN.txt config file which should be located in the same directory as 
+'vina_runner.py' and it also should be set up properly for docking. Have a happy docking!
+
 
 
 ####USER MANUAL:
@@ -53,7 +54,7 @@ strnum_modes => Number of Autodock Vina runs (by default it's 9)
 - After each "=" 1 blank space must be made(" "), as it is done for "vina_dir" variable.
 - "vina_dir" can be changed only from configuration.py file.
 - for the receptor there needs to be written receptor file name (NAME.pdbqt).
-- All the directories can be written with single "\".
+- All the directories can be written with single "\\".
 - After configuring this config file, it must be renamed after a protein name (conf_PROTEIN.txt)
 for which this config is created. It should be located in the same directory as "vina_docker.py".
 - If the docking is re-running with same ligand and protein, but there is changed only grid box parameters,
@@ -62,5 +63,6 @@ or change the next output directory to avoid such result.
 - script will use output_dir line as a default docking output directory, from the command line this directory can be 
 changed manually. Either way if the output_dir does not exists there will be created one.
 - output_dir path must be written with ending '\\' (ex: C:\Program1\TSRI\vina\test2\ <= last '\\' must be presented!)
+- command line command example : python vina_runner.py 6m71 -o C:\\Program1\\TSRI\\vina\\test2\\ (-o and path can be optional)
 
 Have a happy docking!
