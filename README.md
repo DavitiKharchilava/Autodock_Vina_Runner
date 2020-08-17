@@ -10,7 +10,6 @@ The written protein name represents the conf_PROTEIN.txt config file which shoul
 'vina_runner.py' and it also should be set up properly for docking. Have a happy docking!
 
 
-
 ####USER MANUAL:
 
 USER MANUAL:
