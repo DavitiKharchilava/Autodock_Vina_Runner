@@ -6,7 +6,7 @@
 In the command line you need to type the name of a protein correctly (after the 'python3 vina_runner.py ') 
 to let the script start the docking with Autodock Vina. 
 
-Command line command example ==> python vina_runner.py [Protein Name Here] -o C:/Program1/TSRI/vina/test2/ (-o and path can be optional).
+Command line command example ==> python vina_runner.py -c [Protein Name Here] -o C:/Program1/TSRI/vina/test/ (-o and path can be optional).
  
 The written protein name represents the conf_PROTEIN.txt config file which must be located in the same directory as 
 'vina_runner.py' and it also should be set up properly for docking.
@@ -62,7 +62,7 @@ be aware that in the output directory older version of output file will be repla
 or change the next output directory to avoid such result.
 - script will use output_dir line as a default docking output directory, from the command line this directory can be
 changed manually. Either way if the output_dir does not exists there will be created one.
-- output_dir path must be written with ending '/' (ex: C:/Program1/TSRI/vina/test2/ <= last '/' must be presented!)
-- command line command example: python vina_runner.py 6m71 -o C:/Program1/TSRI/vina/test2/ (-o and path can be optional)
+- output_dir path must be written with ending '/' (ex: C:/Program1/TSRI/vina/test/ <= last '/' must be presented!)
+- command line command example: python vina_runner.py -c 6m71 -o C:/Program1/TSRI/vina/test/ (-o and path can be optional)
 
 Have a happy docking!

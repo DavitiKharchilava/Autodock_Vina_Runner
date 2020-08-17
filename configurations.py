@@ -6,19 +6,19 @@ while True:
         parser = argparse.ArgumentParser(add_help=False, description='Runs Autodock Vina multi-ligand docking!')
 
         ## Add the arguments:
-        parser.add_argument("inputProteinName",
+        parser.add_argument('-c', '--configProteinName',
                             type=str,
-                            help="->> python vina_runner.py [Protein Name Here] <<- "
+                            help="->> python vina_runner.py -c [Protein Name Here] <<- "
                                  "Here is the example of a command. "
                                  "You must type correct protein name to run the docking! ")
 
         ## Optional Arguments:
         parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
                             help="In the command line you need to type the name of a protein correctly (after the "
-                                 "'python3 vina_runner.py ') to let the script start the docking with Autodock Vina. "
+                                 "'python3 vina_runner.py') to let the script start the docking with Autodock Vina. "
                                  "Command line command example ==> "
-                                 "python vina_runner.py [Protein Name Here] -o C:/Program1/TSRI/vina/test2/ "
-                                 "(-o and path can be optional). "
+                                 "python vina_runner.py -c [Protein Name Here] -o C:/Program1/TSRI/vina/test/ "
+                                 "(-o path can be optional). "
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
                                  "properly for docking. Have a happy docking!")
@@ -32,7 +32,7 @@ while True:
         ## Execute the parse_args() method:
         args = parser.parse_args()
 
-        pName = args.inputProteinName
+        pName = args.configProteinName
 
         conf_name = "conf_" + pName + ".txt"    ## conf_[PROTEIN_NAME].txt must be located in the same directory as
                                                 ## configuration.py and vina_runner.py
@@ -58,7 +58,7 @@ while True:
             output_dir = args.output
         ## If from command line output_dir is not set, it uses default option from config_[PROTEIN].txt file:
         else:
-            print("\nUsing default output_dir path from " + conf_name)
+            print("\nUsing default output_dir path from " + "[" + conf_name + "].")
             output_dir = lines[5][13:-1].rstrip()
         ## Checks if conf_[PROTEIN].txt file exists.
         if os.path.isfile(conf_name) is True:

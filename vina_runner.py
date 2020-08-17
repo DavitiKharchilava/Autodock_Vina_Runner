@@ -1,10 +1,10 @@
-import os, subprocess, configurations, argparse, sys
-
-# texttable package should be installed for better looking output results:
-from texttable import Texttable
-
 while True:
     try:
+        import os, subprocess, configurations, argparse, sys
+
+        # texttable package should be installed for better looking output results:
+        from texttable import Texttable
+
         ## Looping through the names of a ligands located to the ligands directory and saving them in a list 'lignames':
         lignames = []
         for file in os.listdir(configurations.ligpath):
@@ -96,5 +96,6 @@ while True:
         break
     except:
         ## In case 'vina_runner.py' crashes:
-        print("\n\n'vinna_runner.py' stopped working!\n")
+        print("\n\n'vinna_runner.py' stopped working!"
+              "\nScript cannot find the config file! type -> python vina_runner.py --help")
         break
