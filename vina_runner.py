@@ -97,5 +97,5 @@ while True:
     except:
         ## In case 'vina_runner.py' crashes:
         print("\n\n'vinna_runner.py' stopped working!"
-              "\nScript cannot find the config file! type -> python vina_runner.py --help")
+              "\ntype -> python vina_runner.py --help")
         break

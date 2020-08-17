@@ -56,6 +56,18 @@ while True:
         if args.output is not None:
             print("\nSetting up output_dir path manually...")
             output_dir = args.output
+
+            ## Checks if the manually created path is real, if computer hard disk name is mentioned in the path name.
+            if args.output[1:].startswith(":"):
+                output_dir = args.output
+            else:
+                output_dir = None
+            print("\nThis directory [" + args.output + "] cannot be created. Please type it correctly!\n"
+                                                     "Example: C:/Program1/TSRI/vina/test/ ")
+
+
+
+
         ## If from command line output_dir is not set, it uses default option from config_[PROTEIN].txt file:
         else:
             print("\nUsing default output_dir path from " + "[" + conf_name + "].")
