@@ -8,7 +8,7 @@ while True:
         ## Add the arguments:
         parser.add_argument('-c', '--configProteinName',
                             type=str,
-                            help="->> python vina_runner.py -c [Protein Name Here] <<- "
+                            help="->> python vina_runner.py -c [Configuration File Name Here] <<- "
                                  "Here is the example of a command. "
                                  "You must type correct protein name to run the docking! ")
 
@@ -17,7 +17,7 @@ while True:
                             help="In the command line you need to type the name of a protein correctly (after the "
                                  "'python3 vina_runner.py') to let the script start the docking with Autodock Vina. "
                                  "Command line command example ==> "
-                                 "python vina_runner.py -c [Protein Name Here] -o C:/Program1/TSRI/vina/test/ "
+                                 "python vina_runner.py -c [Configuration File Name Here] -o C:/Program1/TSRI/vina/test/ "
                                  "(-o path can be optional). "
                                  "The written protein name represents the conf_PROTEIN.txt config file which should "
                                  "be located in the same directory as 'vina_runner.py' and it also should be set up "
@@ -34,7 +34,7 @@ while True:
 
         pName = args.configProteinName
 
-        conf_name = "conf_" + pName + ".txt"    ## conf_[PROTEIN_NAME].txt must be located in the same directory as
+        conf_name = pName    ## conf_[PROTEIN__FILE_NAME].txt must be located in the same directory as
                                                 ## configuration.py and vina_runner.py
         with open(conf_name) as file_in:
             lines = []
@@ -57,13 +57,13 @@ while True:
             print("\nSetting up output_dir path manually...")
             output_dir = args.output
 
-            ## Checks if the manually created path is real, if computer hard disk name is mentioned in the path name.
+            ## Checks if the manually created path exists, if not creates one.
             if args.output[1:].startswith(":"):
                 output_dir = args.output
+            ## If user mentioned just a name of a directory but not the full path the output directory will be created
+            ## in the vina.exe directory folder
             else:
-                output_dir = None
-            print("\nThis directory [" + args.output + "] cannot be created. Please type it correctly!\n"
-                                                     "Example: C:/Program1/TSRI/vina/test/ ")
+                output_dir = lines[4][11:-9].rstrip() + args.output + "/"
 
 
 
@@ -71,7 +71,7 @@ while True:
         ## If from command line output_dir is not set, it uses default option from config_[PROTEIN].txt file:
         else:
             print("\nUsing default output_dir path from " + "[" + conf_name + "].")
-            output_dir = lines[5][13:-1].rstrip()
+            output_dir = lines[5][13:].rstrip()
         ## Checks if conf_[PROTEIN].txt file exists.
         if os.path.isfile(conf_name) is True:
             print("\nConfig file name is correct!")

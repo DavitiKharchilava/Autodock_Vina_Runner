@@ -97,7 +97,7 @@ while True:
                     print(t.draw())
                     break
                 except:
-                    print("'texttable' package is not installed properly. Sorting alternatively!")
+                    print("'texttable' package is not installed properly. Sorting alternatively!\n")
 
                     ## Code is almost same as it was for 'texttable' option, but outputs the result in less pretty way...
                     list_pdbqt = []

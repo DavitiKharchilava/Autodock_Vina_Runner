@@ -47,6 +47,6 @@ for which this config is created. It must be located in the same directory as "v
 be aware that in the output directory older version of output file will be replaced with the newer one,
 or change the next output directory to avoid such result.
 # script will use output_dir line as a default docking output directory, from the command line this directory can be
-changed manually. Either way if the output_dir does not exists there will be created one.
+changed manually. Either way if the output_dir does not exist there will be created one.
 # output_dir path must be written with ending '/' (ex: C:/Program1/TSRI/vina/test/ <= last '/' must be presented!)
-# command line command example: python vina_runner.py -c 6m71 -o C:/Program1/TSRI/vina/test/ (-o and path can be optional)
+# command line command example: python vina_runner.py -c conf_6m71.txt -o C:/Program1/TSRI/vina/test/ (-o and path can be optional)
