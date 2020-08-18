@@ -51,46 +51,71 @@ while True:
             """For sorting Autodock Vina outputs"""
 
             print("\n\nSorted docking output with binding energies from highest to low:")
+            while True:
+                try:
+                    ## If you choose to save the output in .txt file [all data.txt] too, the comments "#" need to be
+                    ## removed in lines where the text_file is mentioned
 
-            ## If you choose to save the output in .txt file [all data.txt] too, the comments "#" need to be
-            ## removed in lines where the text_file is mentioned
+                    # text_file = open(output_path + "/all data.txt", mode="a")
 
-            # text_file = open(output_path + "/all data.txt", mode="a")
+                    list_pdbqt = []
+                    ## Gathers all the data in the 'list_pdbat', that is interesting for us, from all files that are
+                    ## located in directory and ends with 'out.pdbqt'
+                    for filename in os.listdir(configurations.output_dir):
+                        if filename.endswith("out.pdbqt"):  # "out" should be deleted if we sort with filenames
+                            pdbqt_file = open(configurations.output_dir + "/" + filename, mode="r")
+                            pdbqt_file.readline()
+                            new_content = pdbqt_file.readline()
+                            list_pdbqt.append((filename, new_content))
+                        else:
+                            print("sorting was not successful, ")
 
-            list_pdbqt = []
 
-            for filename in os.listdir(configurations.output_dir):
-                if filename.endswith(".pdbqt"):  # "out" should be deleted if we sort with filenames
-                    pdbqt_file = open(configurations.output_dir + "/" + filename, mode="r")
-                    pdbqt_file.readline()
-                    new_content = pdbqt_file.readline()
-                    list_pdbqt.append((filename, new_content))
-                else:
-                    print("sorting was not successful, ")
+                    ## Gathers the strongest binding energies from each output file and sorts them with that value.
 
-            list_pdbqt = sorted(list_pdbqt, key=lambda f: float(f[1].split()[3]))
-            ## filename: filename <- for sorting with names
-            ## f: float(f[1].split()[3]) <- for sorting with energy
+                    list_pdbqt = sorted(list_pdbqt, key=lambda f: float(f[1].split()[3]))
+                    ## filename: filename <- for sorting with names
+                    ## f: float(f[1].split()[3]) <- for sorting with energy
 
-            t = Texttable()
+                    t = Texttable()
 
-            for (filename, new_content) in list_pdbqt:
-                # text_file.write(filename)
-                # text_file.write("\n")
-                # text_file.write(new_content)
-                # text_file.write("\n")
-                # text_file.flush()
+                    for (filename, new_content) in list_pdbqt:
+                        # text_file.write(filename)
+                        # text_file.write("\n")
+                        # text_file.write(new_content)
+                        # text_file.write("\n")
+                        # text_file.flush()
 
-                ## If you choose to see the output without texttable package:
-                # print(filename, "||", new_content.split()[3], "||", configurations.output_dir "\n")
+                        ## If you choose to see the output without texttable package:
+                        # print(filename, "||", new_content.split()[3], "||", configurations.output_dir, "\n")
 
-                ## Reviewing sorted output with 'texttable' package:
-                t.add_rows([['Output file name', 'The strongest binding energy', 'Output Directory Path'],
-                            [filename, new_content.split()[3], configurations.output_dir]])
+                        ## Reviewing sorted output with 'texttable' package:
+                        t.add_rows([['Output file name', 'The strongest binding energy', 'Output Directory Path'],
+                                    [filename, new_content.split()[3], configurations.output_dir]])
 
-            ## Printing output texttable:
-            print(t.draw())
+                    ## Printing output texttable:
+                    print(t.draw())
+                    break
+                except:
+                    print("'texttable' package is not installed properly. Sorting alternatively!")
 
+                    ## Code is almost same as it was for 'texttable' option, but outputs the result in less pretty way...
+                    list_pdbqt = []
+
+                    for filename in os.listdir(configurations.output_dir):
+                        if filename.endswith(".pdbqt"):  # "out" should be deleted if we sort with filenames
+                            pdbqt_file = open(configurations.output_dir + "/" + filename, mode="r")
+                            pdbqt_file.readline()
+                            new_content = pdbqt_file.readline()
+                            list_pdbqt.append((filename, new_content))
+                        else:
+                            print("sorting was not successful, ")
+
+                    list_pdbqt = sorted(list_pdbqt, key=lambda f: float(f[1].split()[3]))
+
+                    for (filename, new_content) in list_pdbqt:
+                        print(filename, "||", new_content.split()[3], "||", configurations.output_dir, "\n")
+                    break
             """_________________________________________________________"""
 
         break
