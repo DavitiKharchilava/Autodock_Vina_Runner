@@ -62,7 +62,7 @@ while True:
                 output_dir = args.output
             ## If user mentioned just a name of a directory but not the full path the output directory will be created
             ## in the vina.exe directory folder
-            else:
+            elif not args.output[1:].startswith(":"):
                 output_dir = lines[4][11:-9].rstrip() + args.output + "/"
 
 
